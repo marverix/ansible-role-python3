@@ -1,0 +1,20 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+
+    - name: Check black help
+      shell: "black --help"
+      register: test
+
+    - name: Assert result
+      assert:
+        that: "'Usage' in test.stdout"
+
+    - name: Check flake8 help
+      shell: "flake8 --help"
+      register: test
+
+    - name: Assert result
+      assert:
+        that: "'usage' in test.stdout"

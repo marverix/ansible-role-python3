@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  role_name: python
+  author: marverix
+  description: Ansible role that installs Python3, pip3 and additional packages
+  license: ISC
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - bionic
+
+    - name: EL
+      versions:
+        - 7
+
+  galaxy_tags:
+    - python
+    - pip
+    - system
+
+dependencies: []

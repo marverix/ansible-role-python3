@@ -1,0 +1,12 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+
+    - name: Run python3 command
+      shell: "python3 -c 'print(list(map(lambda it: -it, [-1, 1])))'"
+      register: test
+
+    - name: Assert result
+      assert:
+        that: "test.stdout == '[1, -1]'"

@@ -1,0 +1,12 @@
+---
+language: python
+services: docker
+
+install:
+  - pip install -r https://raw.githubusercontent.com/marverix/ansible-roles-common/latest/test-requirements.txt
+
+script:
+  - molecule test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

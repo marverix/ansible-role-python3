@@ -1,0 +1,53 @@
+---
+- name: Install Python3 on Ubuntu
+  when: ansible_distribution == 'Ubuntu'
+  block:
+
+    - name: Install packages
+      apt:
+        name:
+          - python3
+          - python3-dev
+          - python3-wheel
+          - python3-setuptools
+          - python3-pip
+          - python3-virtualenv
+        state: present
+        update_cache: yes
+
+- name: Install Python3 on CentOS
+  when: ansible_distribution == 'CentOS'
+  block:
+
+    - name: Install EPEL
+      yum:
+        name: "epel-release-{{ python3_epel_release_version }}"
+        enablerepo: extras
+        state: present
+
+    - name: Install packages
+      yum:
+        name:
+          - python3
+          - python3-devel
+          - python3-wheel
+          - python3-setuptools
+          - python3-pip
+          - python3-virtualenv
+        state: present
+        update_cache: yes
+
+- name: "Update pip"
+  pip:
+    name: pip
+    version: "{{ python3_pip_version }}"
+    extra_args: --upgrade
+    executable: pip3
+
+- name: Installing requested global pip packages
+  pip:
+    name: "{{ item }}"
+    state: present
+    executable: pip3
+  loop: "{{ python3_pip_install_globally }}"
+  when: python3_pip_install_globally | length > 0
