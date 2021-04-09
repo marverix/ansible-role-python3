@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: python
+  role_name: python3
   author: marverix
   description: Ansible role that installs Python3, pip3 and additional packages
   license: ISC
