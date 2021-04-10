@@ -13,23 +13,18 @@ platforms:
   - name: ubuntu18
     image: bitbar/ubupy:bionic
     pre_build_image: true
-    privileged: true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:rw
 
   - name: ubuntu20
     image: bitbar/ubupy:focal
     pre_build_image: true
-    privileged: true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:rw
 
   - name: centos7
     image: pycontribs/centos:7
     pre_build_image: true
-    privileged: true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:rw
+
+  - name: centos8
+    image: pycontribs/centos:8
+    pre_build_image: true
 
 provisioner:
   name: ansible
@@ -47,7 +42,7 @@ scenario:
     - create
     - prepare
     - converge
-    # - idempotence
+    - idempotence
     # - side_effect
     - verify
     - cleanup

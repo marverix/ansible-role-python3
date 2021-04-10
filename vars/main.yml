@@ -1,0 +1,11 @@
+---
+python3_packages_common:
+  - python3
+  - python3-wheel
+  - python3-setuptools
+  - python3-pip
+  - python3-virtualenv
+
+python3_packages:
+  Ubuntu: "{{ python3_packages_common + ['python3-dev'] }}"
+  CentOS: "{{ python3_packages_common + ['python3-devel'] }}"

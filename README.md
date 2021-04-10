@@ -26,6 +26,7 @@ Ansible role that installs on linux Python3.
 - ✔️ Ubuntu 18.04 (Bionic)
 - ✔️ Ubuntu 20.04 (Focal)
 - ✔️ CentOS 7
+- ✔️ CentOS 8
 
 ## Requirements
 

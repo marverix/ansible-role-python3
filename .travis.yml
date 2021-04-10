@@ -1,12 +1,18 @@
 ---
+os: linux
+arch: amd64
+dist: bionic
+
 language: python
+cache: pip
 services: docker
 
 install:
   - pip install -r https://raw.githubusercontent.com/marverix/ansible-roles-common/latest/test-requirements.txt
 
 script:
-  - sh test.sh
+  - molecule --base-config molecule/base.yml test --scenario-name default
+  - molecule --base-config molecule/base.yml test --scenario-name with-pip-packages
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
