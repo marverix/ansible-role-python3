@@ -29,13 +29,13 @@ None
 
 ## Source repo matrix
 
-| Python | **3.6** | **3.7** | **3.8** | **3.9** |
+| Python | **3.6** | **3.7** | **3.8** |
 |-|-|-|-|-|
-| **Ubuntu 16** | deadsnakes | deadsnakes | deadsnakes | deadsnakes |
-| **Ubuntu 18** | official | deadsnakes | deadsnakes | deadsnakes |
-| **Ubuntu 20** | deadsnakes | deadsnakes | official | deadsnakes |
-| **CentOS 7** | official | only from source | only from source | only from source |
-| **CentOS 8** | official | only from source | official | only from source |
+| **Ubuntu 16** | deadsnakes | deadsnakes | deadsnakes |
+| **Ubuntu 18** | official | deadsnakes | deadsnakes |
+| **Ubuntu 20** | deadsnakes | deadsnakes | official |
+| **CentOS 7** | official | only from source | only from source |
+| **CentOS 8** | official | only from source | official |
 
 ## Role Variables
 

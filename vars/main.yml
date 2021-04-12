@@ -31,3 +31,6 @@ python3_source_matrix:
     '3.7': source
     '3.8': official
     '3.9': source
+
+python3_get_pip_url: https://bootstrap.pypa.io/get-pip.py
+python3_get_pip_tmp: /tmp/get-pip.py

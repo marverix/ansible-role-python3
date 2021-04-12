@@ -9,7 +9,7 @@
 
     - name: Assert result
       assert:
-        that: "'Python 3.9' in test.stdout"
+        that: "'Python 3.7' in test.stdout"
 
     - name: Run python3 command
       shell: "python3 -c 'print(list(map(lambda it: -it, [-1, 1])))'"
@@ -25,4 +25,4 @@
 
     - name: Assert result
       assert:
-        that: "'(python 3.9)' in test.stdout"
+        that: "'(python 3.7)' in test.stdout"

@@ -6,4 +6,6 @@
   roles:
     - role: ansible-role-python3
       vars:
-        python3_version: '3.9'
+        python3_version: '3.7'
+        python3_link: yes
+        python3_pip_link: yes

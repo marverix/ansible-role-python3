@@ -7,7 +7,5 @@
   apt_repository:
     repo: ppa:deadsnakes/ppa
 
-- name: Install
-  apt:
-    name: "python{{ python3_version }}"
-    update_cache: yes
+- name: Install from repo
+  include_tasks: from-repo.yml

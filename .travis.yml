@@ -15,9 +15,8 @@ script:
   - molecule --base-config molecule/base.yml test --scenario-name python3.6
   - molecule --base-config molecule/base.yml test --scenario-name python3.7
   - molecule --base-config molecule/base.yml test --scenario-name python3.8
-  - molecule --base-config molecule/base.yml test --scenario-name python3.9
   - molecule --base-config molecule/base.yml test --scenario-name python3.6-source-only
-  - molecule --base-config molecule/base.yml test --scenario-name python3.9-link
+  - molecule --base-config molecule/base.yml test --scenario-name python3.7-link
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

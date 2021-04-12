@@ -5,7 +5,7 @@
 
 - name: Install from official repo
   when: python3_install_from == 'official' and not python3_only_from_source
-  include_tasks: from-official.yml
+  include_tasks: from-repo.yml
 
 - name: Install from deadsnakes ppa
   when: python3_install_from == 'deadsnakes' and not python3_only_from_source
@@ -21,6 +21,7 @@
     version: "{{ python3_pip_version }}"
     extra_args: --upgrade
     executable: "/usr/local/bin/pip{{ python3_version }}"
+  changed_when: false
 
 - name: Set links
   when: python3_link or python3_pip_link
