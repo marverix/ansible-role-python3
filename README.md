@@ -30,7 +30,7 @@ None
 ## Source repo matrix
 
 | Python | **3.6** | **3.7** | **3.8** |
-|-|-|-|-|-|
+|-|-|-|-|
 | **Ubuntu 16** | deadsnakes | deadsnakes | deadsnakes |
 | **Ubuntu 18** | official | deadsnakes | deadsnakes |
 | **Ubuntu 20** | deadsnakes | deadsnakes | official |
