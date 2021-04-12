@@ -1,0 +1,20 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+
+    - name: Run python3.6 command
+      shell: "python3.6 --version"
+      register: test
+
+    - name: Assert result
+      assert:
+        that: "'Python 3.6' in test.stdout"
+
+    - name: Run python3.6 command
+      shell: "python3.6 -c 'print(list(map(lambda it: -it, [-1, 1])))'"
+      register: test
+
+    - name: Assert result
+      assert:
+        that: "test.stdout == '[1, -1]'"

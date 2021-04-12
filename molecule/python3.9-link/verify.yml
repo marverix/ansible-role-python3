@@ -1,0 +1,28 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+
+    - name: Run python3 command
+      shell: "python3 --version"
+      register: test
+
+    - name: Assert result
+      assert:
+        that: "'Python 3.9' in test.stdout"
+
+    - name: Run python3 command
+      shell: "python3 -c 'print(list(map(lambda it: -it, [-1, 1])))'"
+      register: test
+
+    - name: Assert result
+      assert:
+        that: "test.stdout == '[1, -1]'"
+
+    - name: Run pip3 command
+      shell: "pip3 --version"
+      register: test
+
+    - name: Assert result
+      assert:
+        that: "'(python 3.9)' in test.stdout"

@@ -10,19 +10,14 @@ Ansible role that installs on linux Python3.
 ## Features
 
 - ✔️ Installing Python3
-  - For Ubuntu from ppa
-  - For CentOS from EPEL
-- ✔️ Installing Python3 packages:
-  - dev/devel
-  - wheel
-  - setuptools
-  - pip
-  - virtualenv
-- ✔️ Possibility to install additional pip packages globally
+  - Select which version
+  - Possibility to build from the source
+  - Possibility to link as default `python3` executable
 - ✔️ Tested with Molecule Verify
 
 ## Supported Platforms
 
+- ✔️ Ubuntu 16.04 (Xenial)
 - ✔️ Ubuntu 18.04 (Bionic)
 - ✔️ Ubuntu 20.04 (Focal)
 - ✔️ CentOS 7
@@ -32,13 +27,25 @@ Ansible role that installs on linux Python3.
 
 None
 
+## Source repo matrix
+
+| Python | **3.6** | **3.7** | **3.8** | **3.9** |
+|-|-|-|-|-|
+| **Ubuntu 16** | deadsnakes | deadsnakes | deadsnakes | deadsnakes |
+| **Ubuntu 18** | official | deadsnakes | deadsnakes | deadsnakes |
+| **Ubuntu 20** | deadsnakes | deadsnakes | official | deadsnakes |
+| **CentOS 7** | official | only from source | only from source | only from source |
+| **CentOS 8** | official | only from source | official | only from source |
+
 ## Role Variables
 
 Variable | Description | Default Value
 --- | --- | ---
+`python3_version` | Version of Python to be installed | `3.6`
+`python3_only_from_source` | Should build and install only from the source? | `no`
+`python3_link` | Link installed version of Python to `/usr/bin/python3` | `no`
+`python3_pip_link` | Link installed version of pip to `/usr/bin/pip3` | `no`
 `python3_pip_version` | Version of pip to be installed | `20.3.4`
-`python3_pip_install_globally` | List of `pip` packages that should be installed globally | `[]`
-`python3_epel_release_version` | EPEL Release Version (for CentOS only) | `7-13`
 
 ## Dependencies
 
@@ -56,7 +63,7 @@ None
 
     ```
 
-1. Install globally `black` and `flake8`
+1. Install Python 3.7
 
     ```yml
     ---
@@ -64,9 +71,21 @@ None
       roles:
         - role: marverix.python3
           vars:
-            python3_pip_install_globally:
-              - black
-              - flake8
+            python3_version: '3.7'
+    ```
+
+1. Install Python 3.6, but only from source and link as default python3
+
+    ```yml
+    ---
+    - hosts: all
+      roles:
+        - role: marverix.python3
+          vars:
+            python3_version: '3.6'
+            python3_only_from_source: yes
+            python3_link: yes
+            python3_pip_link: yes
     ```
 
 ## License

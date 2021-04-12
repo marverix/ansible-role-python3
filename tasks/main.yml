@@ -1,41 +1,27 @@
 ---
-- name: Install Python3 on Ubuntu
-  when: ansible_distribution == 'Ubuntu'
-  block:
+- name: Set facts
+  set_fact:
+    python3_install_from: "{{ python3_source_matrix[ansible_distribution + '_' + ansible_distribution_major_version][python3_version] }}"
 
-    - name: Install packages
-      apt:
-        name: "{{ python3_packages[ansible_distribution] }}"
-        state: present
-        update_cache: yes
+- name: Install from official repo
+  when: python3_install_from == 'official' and not python3_only_from_source
+  include_tasks: from-official.yml
 
-- name: Install Python3 on CentOS
-  when: ansible_distribution == 'CentOS'
-  block:
+- name: Install from deadsnakes ppa
+  when: python3_install_from == 'deadsnakes' and not python3_only_from_source
+  include_tasks: from-deadsnakes.yml
 
-    - name: Install EPEL
-      yum:
-        name: "epel-release-{{ python3_epel_release_version }}"
-        enablerepo: extras
-        state: present
+- name: Install from source
+  when: python3_install_from == 'source' or python3_only_from_source
+  include_tasks: from-source.yml
 
-    - name: Install packages
-      yum:
-        name: "{{ python3_packages[ansible_distribution] }}"
-        state: present
-        update_cache: yes
-
-- name: "Update pip"
+- name: Update pip
   pip:
     name: pip
     version: "{{ python3_pip_version }}"
     extra_args: --upgrade
-    executable: pip3
+    executable: "/usr/local/bin/pip{{ python3_version }}"
 
-- name: Installing requested global pip packages
-  pip:
-    name: "{{ item }}"
-    state: present
-    executable: pip3
-  loop: "{{ python3_pip_install_globally }}"
-  when: python3_pip_install_globally | length > 0
+- name: Set links
+  when: python3_link or python3_pip_link
+  include_tasks: set-links.yml

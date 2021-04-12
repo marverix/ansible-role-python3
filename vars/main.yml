@@ -1,11 +1,33 @@
 ---
-python3_packages_common:
-  - python3
-  - python3-wheel
-  - python3-setuptools
-  - python3-pip
-  - python3-virtualenv
+python3_sources:
+  '3.6': https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tar.xz
+  '3.7': https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz
+  '3.8': https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tar.xz
+  '3.9': https://www.python.org/ftp/python/3.9.4/Python-3.9.4.tar.xz
 
-python3_packages:
-  Ubuntu: "{{ python3_packages_common + ['python3-dev'] }}"
-  CentOS: "{{ python3_packages_common + ['python3-devel'] }}"
+python3_source_matrix:
+  Ubuntu_16:
+    '3.6': deadsnakes
+    '3.7': deadsnakes
+    '3.8': deadsnakes
+    '3.9': deadsnakes
+  Ubuntu_18:
+    '3.6': official
+    '3.7': deadsnakes
+    '3.8': deadsnakes
+    '3.9': deadsnakes
+  Ubuntu_20:
+    '3.6': deadsnakes
+    '3.7': deadsnakes
+    '3.8': official
+    '3.9': deadsnakes
+  CentOS_7:
+    '3.6': official
+    '3.7': source
+    '3.8': source
+    '3.9': source
+  CentOS_8:
+    '3.6': official
+    '3.7': source
+    '3.8': official
+    '3.9': source

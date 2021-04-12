@@ -6,6 +6,5 @@
   roles:
     - role: ansible-role-python3
       vars:
-        python3_pip_install_globally:
-          - black
-          - flake8
+        python3_version: '3.6'
+        python3_only_from_source: yes

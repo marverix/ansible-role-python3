@@ -1,9 +1,9 @@
 ---
+python3_version: '3.6'
+python3_only_from_source: no
+
+python3_link: no
+python3_pip_link: no
+
 # This is the last cross-python version
-python3_pip_version: 20.3.4
-
-python3_pip_install_globally: []
-
-# If you getting error "No package matching 'epel-release-X-Y' found available, installed or updated",
-# then please check if this package is available here: https://pkgs.org/download/epel-release
-python3_epel_release_version: 7-13
+python3_pip_version: '20.3.4'

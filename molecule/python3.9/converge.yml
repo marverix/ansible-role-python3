@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  become: yes
+
+  roles:
+    - role: ansible-role-python3
+      vars:
+        python3_version: '3.9'

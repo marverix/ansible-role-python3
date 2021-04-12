@@ -10,6 +10,10 @@ lint: |
   ansible-lint .
 
 platforms:
+  - name: ubuntu16
+    image: bitbar/ubupy:xenial
+    pre_build_image: true
+
   - name: ubuntu18
     image: bitbar/ubupy:bionic
     pre_build_image: true
